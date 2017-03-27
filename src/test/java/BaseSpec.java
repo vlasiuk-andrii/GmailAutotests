@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import static java.lang.Thread.sleep;
+
 public class BaseSpec {
 
     public static Properties useProperties(){
@@ -29,13 +31,10 @@ public class BaseSpec {
         return properties;
     }
 
-//    protected static final String WEB_SERVER = System.getProperty("WEB_SERVER", "https://test.onejl.uk");
-//    protected static final String BROWSER = System.getProperty("BROWSER", "chrome");
-
     protected static final String URL = useProperties().getProperty("URL");
     protected static final String BROWSER = useProperties().getProperty("BROWSER");;
 
-    WebDriver driver;
+    public WebDriver driver;
 
     @Before
     public void setUp() {
@@ -43,7 +42,7 @@ public class BaseSpec {
             //System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
             driver = new FirefoxDriver();
         } else if (BROWSER.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
             //System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.silentOutput", "true");
             driver = new ChromeDriver();
@@ -59,6 +58,7 @@ public class BaseSpec {
 
     @After
     public void tearDown() {
+        driver.close();
         driver.quit();
     }
 }
