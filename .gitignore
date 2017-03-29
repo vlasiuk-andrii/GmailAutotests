@@ -12,3 +12,6 @@
 *.zip
 
 .idea
+
+.iml
+target/
