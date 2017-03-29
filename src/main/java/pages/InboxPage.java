@@ -25,6 +25,10 @@ public class InboxPage extends FunctionExtension {
     @FindBy(css = "div.TK")
     private WebElement menuList;
 
-
+    public void assertContentOnPage(){
+        inboxMailList.isDisplayed();
+        createNewMessageButton.isDisplayed();
+        menuList.isDisplayed();
+    }
 
 }

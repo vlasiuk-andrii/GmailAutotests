@@ -43,6 +43,15 @@ public class LogInPage extends FunctionExtension {
     @FindBy(id = "account-chooser-link")
     private WebElement accountChooserLink;
 
+    @FindBy(xpath = "//h1[contains(text(),'One account. All of Google.')]")
+    private WebElement tagline;
+
+    @FindBy(id = "canvas")
+    private WebElement accountPicture;
+
+    @FindBy(xpath = "//a[contains(text(),'Create account')]")
+    private WebElement createAccountLink;
+
     public void logInSuccess()  {
         emailField.sendKeys(CommonConstants.EMAIL);
         nextButton.click();
@@ -64,5 +73,12 @@ public class LogInPage extends FunctionExtension {
 
     public void assertIsNotAuthorized() {
         accountChooserLink.isDisplayed();
+    }
+
+    public void assertContentOnPage(){
+        tagline.isDisplayed();
+        accountPicture.isDisplayed();
+        emailField.isDisplayed();
+        createAccountLink.isDisplayed();
     }
 }
