@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5774b7e-8da4-4a8a-b6a8-197bff2310a0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ContentTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pages/InboxPage.java" afterPath="$PROJECT_DIR$/src/main/java/pages/InboxPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pages/LogInPage.java" afterPath="$PROJECT_DIR$/src/main/java/pages/LogInPage.java" />
     </list>
     <ignored path="Gmail.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogInPage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LogInPage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pages/LogInPage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
@@ -51,6 +49,16 @@
                 <element signature="e#1939#1940#0" expanded="true" />
                 <element signature="e#1987#1988#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -135,6 +143,7 @@
         <option value="$PROJECT_DIR$/src/main/java/pages/InboxPage.java" />
         <option value="$PROJECT_DIR$/src/test/java/ContentTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/pages/LogInPage.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -666,6 +675,9 @@
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="All_in_Gmail - 2017.03.29 at 23h 40m 43s.xml">
+      <configuration name="All in Gmail" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="AuthorizationTest - 2017.03.29 at 23h 38m 41s.xml">
       <configuration name="AuthorizationTest" configurationId="JUnit" />
     </history-entry>
@@ -690,9 +702,6 @@
     <history-entry file="ContentTest_inboxPageContentTest - 2017.03.29 at 23h 37m 44s.xml">
       <configuration name="ContentTest.inboxPageContentTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ContentTest_logInPageContentText - 2017.03.29 at 23h 30m 51s.xml">
-      <configuration name="ContentTest.logInPageContentText" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ContentTest_logInPageContentText - 2017.03.29 at 23h 35m 39s.xml">
       <configuration name="ContentTest.logInPageContentText" configurationId="JUnit" />
     </history-entry>
@@ -709,7 +718,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48281017" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48281017" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7279522" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -979,6 +988,14 @@
             <element signature="e#1939#1940#0" expanded="true" />
             <element signature="e#1987#1988#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
