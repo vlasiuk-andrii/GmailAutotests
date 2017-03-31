@@ -11,8 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import static java.lang.Thread.sleep;
-
 public class BaseSpec {
 
     public static Properties useProperties(){
@@ -42,7 +40,7 @@ public class BaseSpec {
             //System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
             driver = new FirefoxDriver();
         } else if (BROWSER.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             //System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.silentOutput", "true");
             driver = new ChromeDriver();
