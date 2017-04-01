@@ -20,7 +20,6 @@ public class AuthorizationTest extends BaseSpec {
 
     @Test
     public void logOutTest(){
-        logInPage.init(driver);
         logInPage.logOutSuccess();
         logInPage.assertIsNotAuthorized();
     }

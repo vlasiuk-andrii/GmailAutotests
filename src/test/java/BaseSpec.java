@@ -5,6 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
+import pages.InboxPage;
+import pages.LogInPage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,15 +18,11 @@ public class BaseSpec {
 
     public static Properties useProperties(){
         FileInputStream input = null;
-        try {
-            input = new FileInputStream("maven.properties");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
         Properties properties = new Properties();
         try {
+            input = new FileInputStream("maven.properties");
             properties.load(input);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return properties;

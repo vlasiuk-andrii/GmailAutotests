@@ -17,7 +17,6 @@ public class CreateNewDraftTest extends BaseSpec{
 
     @Test
     public void createNewDraftTest(){
-        inboxPage.init(driver);
         inboxPage.createNewDraft("DraftTopic_", "DraftBody");
         inboxPage.verifyDraftCreated("DraftTopic_", "DraftBody");
     }

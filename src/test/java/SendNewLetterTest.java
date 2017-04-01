@@ -12,13 +12,12 @@ public class SendNewLetterTest extends BaseSpec{
     @Before
     public void logIn(){
         logInPage.init(driver);
-        logInPage.logInSuccess();
         inboxPage.init(driver);
+        logInPage.logInSuccess();
     }
 
     @Test
     public void sendNewLetterTest(){
-        inboxPage.init(driver);
         inboxPage.sendNewLetter(CommonConstants.EMAIL, "TestLetterTopic_", "LetterBody");
         inboxPage.verifyLetterCame("TestLetterTopic_", "LetterBody");
     }
