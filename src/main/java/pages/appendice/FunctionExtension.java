@@ -3,11 +3,16 @@ package pages.appendice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static java.lang.Thread.sleep;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -20,13 +25,12 @@ public class FunctionExtension {
                     }
                 };
         try {
-            Thread.sleep(1000);
+            sleep(1000);
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(expectation);
         } catch (Throwable error) {
             //Assert.fail("Timeout waiting for Page Load Request to complete.");
         }
-
     }
 
     public String currentDateAndTime(){
@@ -34,17 +38,13 @@ public class FunctionExtension {
         return timeStamp;
     }
 
-    public void elementIsNotDisplayed(WebDriver driver, String elementCssSelector) {
+    public void elementIsNotDisplayed(WebDriver driver, String elementCssLocator) {
         try {
-            driver.findElement(By.cssSelector(elementCssSelector));
+            driver.findElement(By.cssSelector(elementCssLocator));
             fail("Element is present. But shouldn't be present");
         } catch (Exception ex) {
-        /* do nothing, link is not present, assert is passed */
+        /* do nothing, object is not present, assert is passed */
         }
     }
 
-    public void attachFile(WebDriver driver, String filePath, String elementCssLocator){
-        //driver.setFileDetector(new LocalFileDetector());
-        driver.findElement(By.cssSelector(elementCssLocator)).sendKeys(filePath);
-    }
 }

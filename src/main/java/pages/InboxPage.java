@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import pages.appendice.CommonConstants;
 import pages.appendice.FunctionExtension;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -56,6 +60,14 @@ public class InboxPage extends FunctionExtension {
     @FindBy(xpath = "//div[@class='gs']/div/div/div[1]")
     private WebElement letterBody;
 
+    @FindBy(css = "img.Ha")
+    private WebElement closePanelButton;
+
+    @FindBy(xpath = "//div[@class='aim'][3]")
+    private WebElement draftLink;
+
+    @FindBy(xpath = "(//table[@class='F cf zt']//tbody/tr[1])[2]")
+    private WebElement lastDraft;
 
     public void assertContentOnPage(){
         inboxMailList.isDisplayed();
@@ -69,7 +81,7 @@ public class InboxPage extends FunctionExtension {
         sendToField.sendKeys(sendTo);
         emailTopicField.sendKeys(topic + currentDateAndTime());
         emailTextArea.sendKeys(letterBody);
-        //attachFile(driver, "home/qwerty/Programming/GmailAutotests/pom.xml", "div.a1.aaA.aMZ");
+        //attachFile("home/qwerty/Programming/GmailAutotests/pom.xml", "div.a1.aaA.aMZ");
         waitForJSinactivity(driver);
         sendLetterButton.click();
         waitForJSinactivity(driver);
@@ -84,5 +96,49 @@ public class InboxPage extends FunctionExtension {
     private void verifyLetterContent(String topic, String letterBodyText) {
         letterTopic.getText().contains(topic);
         letterBody.getText().contains(letterBodyText);
+    }
+
+    public void attachFile(String filePath, String elementCssLocator){
+        driver.findElement(By.cssSelector(elementCssLocator)).click();
+        StringSelection ss = new StringSelection(filePath);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
+
+    public void createNewDraft(String draftTopic, String draftBody) {
+        createNewMessageButton.click();
+        waitForJSinactivity(driver);
+        emailTopicField.sendKeys(draftTopic + currentDateAndTime());
+        emailTextArea.sendKeys(draftBody);
+        waitForJSinactivity(driver);
+        closePanelButton.click();
+        waitForJSinactivity(driver);
+        elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
+    }
+
+    public void verifyDraftCreated(String draftTopic, String draftBody) {
+        draftLink.click();
+        waitForJSinactivity(driver);
+        lastDraft.click();
+        waitForJSinactivity(driver);
+        verifyDraftContent(draftTopic, draftBody);
+    }
+
+    private void verifyDraftContent(String draftTopic, String draftBody) {
+        emailTopicField.getText().contentEquals(draftTopic);
+        emailTextArea.getText().contentEquals(draftBody);
     }
 }
