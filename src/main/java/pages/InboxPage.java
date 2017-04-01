@@ -44,24 +44,45 @@ public class InboxPage extends FunctionExtension {
     @FindBy(css = "div.T-I.J-J5-Ji.aoO.T-I-atl.L3")
     private WebElement sendLetterButton;
 
+    @FindBy(css = "div.nH.Hd")
+    private WebElement newMessagePanel;
+
+    @FindBy(xpath = "//table[@class='F cf zt']//tbody/tr[1]")
+    private WebElement lastMessage;
+
+    @FindBy(css = "h2.hP")
+    private WebElement letterTopic;
+
+    @FindBy(xpath = "//div[@class='gs']/div/div/div[1]")
+    private WebElement letterBody;
+
+
     public void assertContentOnPage(){
         inboxMailList.isDisplayed();
         createNewMessageButton.isDisplayed();
         menuList.isDisplayed();
     }
 
-    public String currentDateAndTime(){
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(Calendar.getInstance().getTime());
-        return timeStamp;
-    }
-
-    public void sendNewLetter() {
+    public void sendNewLetter(String sendTo, String topic, String letterBody) {
         createNewMessageButton.click();
         waitForJSinactivity(driver);
-        sendToField.sendKeys(CommonConstants.EMAIL);
-        emailTopicField.sendKeys("TestLetter_" + currentDateAndTime());
-        emailTextArea.sendKeys("LetterBody");
+        sendToField.sendKeys(sendTo);
+        emailTopicField.sendKeys(topic + currentDateAndTime());
+        emailTextArea.sendKeys(letterBody);
+        //attachFile(driver, "home/qwerty/Programming/GmailAutotests/pom.xml", "div.a1.aaA.aMZ");
+        waitForJSinactivity(driver);
         sendLetterButton.click();
         waitForJSinactivity(driver);
+        elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
+    }
+
+    public void verifyLetterCame(String topic, String letterBodyText) {
+        lastMessage.click();
+        verifyLetterContent(topic, letterBodyText);
+    }
+
+    private void verifyLetterContent(String topic, String letterBodyText) {
+        letterTopic.getText().contains(topic);
+        letterBody.getText().contains(letterBodyText);
     }
 }

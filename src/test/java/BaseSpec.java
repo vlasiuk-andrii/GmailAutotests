@@ -11,8 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import static java.lang.Thread.sleep;
-
 public class BaseSpec {
 
     public static Properties useProperties(){
@@ -39,7 +37,8 @@ public class BaseSpec {
     @Before
     public void setUp() {
         if (BROWSER.equals("firefox")) {
-            //System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+            //System.setProperty("webdriver.chrome.silentOutput", "true");
+            System.setProperty("webdriver.gecko.driver", "geckodriver");
             driver = new FirefoxDriver();
         } else if (BROWSER.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
