@@ -15,7 +15,7 @@ public class SendNewLetterTest extends BaseSpec{
     }
 
     @Test
-    public void sendNewLetterTest(){
+    public void sendNewLetterTest() {
         inboxPage.sendNewLetter(CommonConstants.EMAIL, "TestLetterTopic_", "LetterBody");
         inboxPage.verifyLetterCame("TestLetterTopic_", "LetterBody");
     }

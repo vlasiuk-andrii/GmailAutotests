@@ -29,7 +29,7 @@ public class BaseSpec {
     }
 
     protected static final String URL = useProperties().getProperty("URL");
-    protected static final String BROWSER = useProperties().getProperty("BROWSER");;
+    protected static final String BROWSER = useProperties().getProperty("BROWSER");
 
 
 

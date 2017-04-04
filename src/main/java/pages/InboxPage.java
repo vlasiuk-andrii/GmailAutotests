@@ -73,7 +73,7 @@ public class InboxPage extends FunctionExtension {
         sendToField.sendKeys(sendTo);
         emailTopicField.sendKeys(topic + currentDateAndTime());
         emailTextArea.sendKeys(letterBody);
-        //attachFile("home/qwerty/Programming/GmailAutotests/pom.xml", "div.a1.aaA.aMZ");
+        //attachFile("D:\\GmailAutotests\\pom.xml", "div.a1.aaA.aMZ");
         waitForJSinactivity(driver);
         sendLetterButton.click();
         waitForJSinactivity(driver);
@@ -91,7 +91,6 @@ public class InboxPage extends FunctionExtension {
     }
 
     public void attachFile(String filePath, String elementCssLocator){
-        driver.findElement(By.cssSelector(elementCssLocator)).click();
         StringSelection ss = new StringSelection(filePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
@@ -102,12 +101,15 @@ public class InboxPage extends FunctionExtension {
             e.printStackTrace();
         }
 
+        driver.findElement(By.cssSelector(elementCssLocator)).click();
+
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+
     }
 
     public void createNewDraft(String draftTopic, String draftBody) {
