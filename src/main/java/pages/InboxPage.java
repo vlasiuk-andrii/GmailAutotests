@@ -11,7 +11,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
 public class InboxPage extends FunctionExtension {
-    WebDriver driver;
 
     public InboxPage(WebDriver driver) {
         super(driver);
