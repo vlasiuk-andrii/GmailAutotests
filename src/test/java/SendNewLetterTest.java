@@ -11,8 +11,6 @@ public class SendNewLetterTest extends BaseSpec{
 
     @Before
     public void logIn(){
-        logInPage.init(driver);
-        inboxPage.init(driver);
         logInPage.logInSuccess();
     }
 

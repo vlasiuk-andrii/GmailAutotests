@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 import pages.InboxPage;
 import pages.LogInPage;
-import pages.appendice.CommonConstants;
 
 public class CreateNewDraftTest extends BaseSpec{
     InboxPage inboxPage = new InboxPage(driver);
@@ -10,9 +9,7 @@ public class CreateNewDraftTest extends BaseSpec{
 
     @Before
     public void logIn(){
-        logInPage.init(driver);
         logInPage.logInSuccess();
-        inboxPage.init(driver);
     }
 
     @Test

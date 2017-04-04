@@ -1,22 +1,26 @@
 package pages.appendice;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import static java.lang.Thread.sleep;
-import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
 
 public class FunctionExtension {
+
+    public FunctionExtension (WebDriver driver){
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public WebDriver driver;
 
     public void waitForJSinactivity(WebDriver driver){
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {

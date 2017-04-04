@@ -4,24 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import pages.appendice.CommonConstants;
 import pages.appendice.FunctionExtension;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class InboxPage extends FunctionExtension {
+    WebDriver driver;
 
-    private WebDriver driver;
     public InboxPage(WebDriver driver) {
-        this.driver = driver;
-    }
-    public void init(WebDriver driver){
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(css = "div.ae4.aDM")

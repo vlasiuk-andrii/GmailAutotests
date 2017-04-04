@@ -1,22 +1,15 @@
 package pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import pages.appendice.CommonConstants;
 import pages.appendice.FunctionExtension;
 
-import static java.lang.Thread.sleep;
-import static org.junit.Assert.assertTrue;
-
 public class LogInPage extends FunctionExtension {
 
-    private WebDriver driver;
     public LogInPage(WebDriver driver) {
-        this.driver = driver;
-    }
-    public void init(WebDriver driver){
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(css = "input#Email")

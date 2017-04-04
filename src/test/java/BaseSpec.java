@@ -1,20 +1,20 @@
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.PageFactory;
-import pages.InboxPage;
-import pages.LogInPage;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 public class BaseSpec {
+
+    public static WebDriver driver;
 
     public static Properties useProperties(){
         FileInputStream input = null;
@@ -31,31 +31,37 @@ public class BaseSpec {
     protected static final String URL = useProperties().getProperty("URL");
     protected static final String BROWSER = useProperties().getProperty("BROWSER");;
 
-    public WebDriver driver;
 
-    @Before
-    public void setUp() {
+
+    @BeforeClass
+    public static void setUp() {
         if (BROWSER.equals("firefox")) {
             //System.setProperty("webdriver.chrome.silentOutput", "true");
             System.setProperty("webdriver.gecko.driver", "geckodriver");
             driver = new FirefoxDriver();
         } else if (BROWSER.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             //System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.silentOutput", "true");
             driver = new ChromeDriver();
-        } else if (BROWSER.equals("internetExplorer")) {
-            DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-            capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-            driver = new InternetExplorerDriver(capabilities);
+        } else if (BROWSER.equals("edge")) {
+            System.setProperty("webdriver.edge.driver", "MicrosoftWebDriver.exe");
+            driver = new EdgeDriver();
+        } else if (BROWSER.equals("phantomjs")) {
+            Capabilities caps = new DesiredCapabilities();
+            ((DesiredCapabilities) caps).setJavascriptEnabled(true);
+            ((DesiredCapabilities) caps).setCapability("takesScreenshot", true);
+            ((DesiredCapabilities) caps).setCapability(
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "phantomjs.exe");
+            driver = new PhantomJSDriver(caps);
         } else {
             throw new RuntimeException("Browser type unsupported");
         }
         driver.get(URL);
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         driver.close();
         driver.quit();
     }
