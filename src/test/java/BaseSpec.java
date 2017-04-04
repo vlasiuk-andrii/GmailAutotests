@@ -37,22 +37,22 @@ public class BaseSpec {
     public static void setUp() {
         if (BROWSER.equals("firefox")) {
             //System.setProperty("webdriver.chrome.silentOutput", "true");
-            System.setProperty("webdriver.gecko.driver", "geckodriver");
+            System.setProperty("webdriver.gecko.driver", "drivers/geckodriver");
             driver = new FirefoxDriver();
         } else if (BROWSER.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
             //System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.silentOutput", "true");
             driver = new ChromeDriver();
         } else if (BROWSER.equals("edge")) {
-            System.setProperty("webdriver.edge.driver", "MicrosoftWebDriver.exe");
+            System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
             driver = new EdgeDriver();
         } else if (BROWSER.equals("phantomjs")) {
             Capabilities caps = new DesiredCapabilities();
             ((DesiredCapabilities) caps).setJavascriptEnabled(true);
             ((DesiredCapabilities) caps).setCapability("takesScreenshot", true);
             ((DesiredCapabilities) caps).setCapability(
-                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "phantomjs.exe");
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "drivers/phantomjs.exe");
             driver = new PhantomJSDriver(caps);
         } else {
             throw new RuntimeException("Browser type unsupported");
