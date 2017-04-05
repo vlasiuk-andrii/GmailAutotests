@@ -3,6 +3,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import pages.LogInPage;
 
+import static org.junit.Assert.assertTrue;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorizationTest extends BaseSpec {
 
@@ -11,12 +13,12 @@ public class AuthorizationTest extends BaseSpec {
     @Test
     public void firstLogInTest(){
         logInPage.logInSuccess();
-        logInPage.assertIsAuthorised();
+        assertTrue(logInPage.assertIsAuthorised());
     }
 
     @Test
     public void secondLogOutTest(){
         logInPage.logOutSuccess();
-        logInPage.assertIsNotAuthorized();
+        assertTrue(logInPage.assertIsNotAuthorized());
     }
 }

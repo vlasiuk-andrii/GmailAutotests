@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+
 public class InboxPage extends FunctionExtension {
 
     public InboxPage(WebDriver driver) {
@@ -61,10 +62,14 @@ public class InboxPage extends FunctionExtension {
     @FindBy(xpath = "(//table[@class='F cf zt']//tbody/tr[1])[2]")
     private WebElement lastDraft;
 
-    public void assertContentOnPage(){
-        inboxMailList.isDisplayed();
-        createNewMessageButton.isDisplayed();
-        menuList.isDisplayed();
+    public boolean assertContentOnPage(){
+        boolean elementsDisplayed = false;
+        if(inboxMailList.isDisplayed() &&
+        createNewMessageButton.isDisplayed() &&
+        menuList.isDisplayed()){
+            elementsDisplayed = true;
+        }
+        return elementsDisplayed;
     }
 
     public void sendNewLetter(String sendTo, String topic, String letterBody) {
@@ -80,17 +85,20 @@ public class InboxPage extends FunctionExtension {
         elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
     }
 
-    public void verifyLetterCame(String topic, String letterBodyText) {
+    public boolean verifyLetterCame(String topic, String letterBodyText) {
         lastMessage.click();
-        verifyLetterContent(topic, letterBodyText);
+        return verifyLetterContent(topic, letterBodyText);
     }
 
-    private void verifyLetterContent(String topic, String letterBodyText) {
-        letterTopic.getText().contains(topic);
-        letterBody.getText().contains(letterBodyText);
+    private boolean verifyLetterContent(String topic, String letterBodyText) {
+        if (letterTopic.getText().contains(topic) &&
+        letterBody.getText().contains(letterBodyText)){
+            return true;
+        }
+        return false;
     }
 
-    public void attachFile(String filePath, String elementCssLocator){
+    private void attachFile(String filePath, String elementCssLocator){
         StringSelection ss = new StringSelection(filePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
@@ -123,16 +131,16 @@ public class InboxPage extends FunctionExtension {
         elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
     }
 
-    public void verifyDraftCreated(String draftTopic, String draftBody) {
+    public boolean verifyDraftCreated(String draftTopic, String draftBody) {
         draftLink.click();
         waitForJSinactivity(driver);
         lastDraft.click();
         waitForJSinactivity(driver);
-        verifyDraftContent(draftTopic, draftBody);
+        return verifyDraftContent(draftTopic, draftBody);
     }
 
-    private void verifyDraftContent(String draftTopic, String draftBody) {
-        emailTopicField.getText().contentEquals(draftTopic);
-        emailTextArea.getText().contentEquals(draftBody);
+    private boolean verifyDraftContent(String draftTopic, String draftBody) {
+        //emailTopicField.getText().contentEquals(draftTopic);  // value of subject is saved in other element
+        return emailTextArea.getText().contentEquals(draftBody);
     }
 }

@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pages.InboxPage;
 import pages.LogInPage;
+import static org.junit.Assert.assertTrue;
 
 public class CreateNewDraftTest extends BaseSpec{
     InboxPage inboxPage = new InboxPage(driver);
@@ -15,6 +16,6 @@ public class CreateNewDraftTest extends BaseSpec{
     @Test
     public void createNewDraftTest(){
         inboxPage.createNewDraft("DraftTopic_", "DraftBody");
-        inboxPage.verifyDraftCreated("DraftTopic_", "DraftBody");
+        assertTrue("Draft wasn't created",inboxPage.verifyDraftCreated("DraftTopic_", "DraftBody"));
     }
 }

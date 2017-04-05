@@ -54,8 +54,8 @@ public class LogInPage extends FunctionExtension {
         waitForJSinactivity(driver);
     }
 
-    public void assertIsAuthorised(){
-        accountLink.isDisplayed();
+    public boolean assertIsAuthorised(){
+        return accountLink.isDisplayed();
     }
 
     public void logOutSuccess() {
@@ -64,14 +64,18 @@ public class LogInPage extends FunctionExtension {
         waitForJSinactivity(driver);
     }
 
-    public void assertIsNotAuthorized() {
-        accountChooserLink.isDisplayed();
+    public boolean assertIsNotAuthorized() {
+        return accountChooserLink.isDisplayed();
     }
 
-    public void assertContentOnPage(){
-        tagline.isDisplayed();
-        accountPicture.isDisplayed();
-        emailField.isDisplayed();
-        createAccountLink.isDisplayed();
+    public boolean assertContentOnPage(){
+        boolean elementsDisplayed = false;
+        if (tagline.isDisplayed() &&
+        accountPicture.isDisplayed() &&
+        emailField.isDisplayed() &&
+        createAccountLink.isDisplayed()){
+            elementsDisplayed = true;
+        }
+        return elementsDisplayed;
     }
 }
