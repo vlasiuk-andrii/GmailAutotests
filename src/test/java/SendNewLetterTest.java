@@ -13,12 +13,13 @@ public class SendNewLetterTest extends BaseSpec{
 
     @Before
     public void logIn(){
-        logInPage.logInSuccess();
+        logInPage.logIn();
     }
 
     @Test
     public void sendNewLetterTest() {
-        inboxPage.sendNewLetter(CommonConstants.EMAIL, "TestLetterTopic_", "LetterBody");
-        assertTrue(inboxPage.verifyLetterCame("TestLetterTopic_", "LetterBody"));
+        //logInPage.check();
+        inboxPage.sendNewLetter(CommonConstants.EMAIL, CommonConstants.LETTER_TOPIC, CommonConstants.LETTER_BODY);
+        assertTrue(inboxPage.isLetterReceived(CommonConstants.LETTER_TOPIC, CommonConstants.LETTER_BODY));
     }
 }

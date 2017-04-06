@@ -15,12 +15,12 @@ import static org.junit.Assert.fail;
 
 public class FunctionExtension {
 
+    public WebDriver driver;
+
     public FunctionExtension (WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    public WebDriver driver;
 
     public void waitForJSinactivity(WebDriver driver){
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {

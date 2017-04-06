@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.appendice.CommonConstants;
 import pages.appendice.FunctionExtension;
 
 import java.awt.*;
@@ -41,7 +42,7 @@ public class InboxPage extends FunctionExtension {
     @FindBy(css = "div.T-I.J-J5-Ji.aoO.T-I-atl.L3")
     private WebElement sendLetterButton;
 
-    @FindBy(css = "div.nH.Hd")
+    @FindBy(css = CommonConstants.NEW_MESSAGE_PANEL_LOCATOR)
     private WebElement newMessagePanel;
 
     @FindBy(xpath = "//table[@class='F cf zt']//tbody/tr[1]")
@@ -62,7 +63,7 @@ public class InboxPage extends FunctionExtension {
     @FindBy(xpath = "(//table[@class='F cf zt']//tbody/tr[1])[2]")
     private WebElement lastDraft;
 
-    public boolean assertContentOnPage(){
+    public boolean isContentOnPageCorrect(){
         boolean elementsDisplayed = false;
         if(inboxMailList.isDisplayed() &&
         createNewMessageButton.isDisplayed() &&
@@ -82,15 +83,15 @@ public class InboxPage extends FunctionExtension {
         waitForJSinactivity(driver);
         sendLetterButton.click();
         waitForJSinactivity(driver);
-        elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
+        elementIsNotDisplayed(driver, CommonConstants.NEW_MESSAGE_PANEL_LOCATOR);
     }
 
-    public boolean verifyLetterCame(String topic, String letterBodyText) {
+    public boolean isLetterReceived(String topic, String letterBodyText) {
         lastMessage.click();
-        return verifyLetterContent(topic, letterBodyText);
+        return isLetterContentCorrect(topic, letterBodyText);
     }
 
-    private boolean verifyLetterContent(String topic, String letterBodyText) {
+    private boolean isLetterContentCorrect(String topic, String letterBodyText) {
         if (letterTopic.getText().contains(topic) &&
         letterBody.getText().contains(letterBodyText)){
             return true;
@@ -128,18 +129,18 @@ public class InboxPage extends FunctionExtension {
         waitForJSinactivity(driver);
         closePanelButton.click();
         waitForJSinactivity(driver);
-        elementIsNotDisplayed(driver, "div.nH.Hd"); //newMessagePanel
-    }
+        elementIsNotDisplayed(driver, CommonConstants.NEW_MESSAGE_PANEL_LOCATOR);
+}
 
-    public boolean verifyDraftCreated(String draftTopic, String draftBody) {
+    public boolean isDraftCreated(String draftTopic, String draftBody) {
         draftLink.click();
         waitForJSinactivity(driver);
         lastDraft.click();
         waitForJSinactivity(driver);
-        return verifyDraftContent(draftTopic, draftBody);
+        return isDraftContentCorrect(draftTopic, draftBody);
     }
 
-    private boolean verifyDraftContent(String draftTopic, String draftBody) {
+    private boolean isDraftContentCorrect(String draftTopic, String draftBody) {
         //emailTopicField.getText().contentEquals(draftTopic);  // value of subject is saved in other element
         return emailTextArea.getText().contentEquals(draftBody);
     }

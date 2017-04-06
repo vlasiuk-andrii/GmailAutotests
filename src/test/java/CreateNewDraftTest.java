@@ -2,6 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 import pages.InboxPage;
 import pages.LogInPage;
+import pages.appendice.CommonConstants;
+
 import static org.junit.Assert.assertTrue;
 
 public class CreateNewDraftTest extends BaseSpec{
@@ -10,12 +12,12 @@ public class CreateNewDraftTest extends BaseSpec{
 
     @Before
     public void logIn(){
-        logInPage.logInSuccess();
+        logInPage.logIn();
     }
 
     @Test
     public void createNewDraftTest(){
-        inboxPage.createNewDraft("DraftTopic_", "DraftBody");
-        assertTrue("Draft wasn't created",inboxPage.verifyDraftCreated("DraftTopic_", "DraftBody"));
+        inboxPage.createNewDraft(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY);
+        assertTrue("Draft wasn't created",inboxPage.isDraftCreated(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY));
     }
 }

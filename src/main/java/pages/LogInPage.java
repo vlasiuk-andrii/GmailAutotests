@@ -45,7 +45,7 @@ public class LogInPage extends FunctionExtension {
     @FindBy(xpath = "//a[contains(text(),'Create account')]")
     private WebElement createAccountLink;
 
-    public void logInSuccess()  {
+    public void logIn()  {
         emailField.sendKeys(CommonConstants.EMAIL);
         nextButton.click();
         waitForJSinactivity(driver);
@@ -54,21 +54,21 @@ public class LogInPage extends FunctionExtension {
         waitForJSinactivity(driver);
     }
 
-    public boolean assertIsAuthorised(){
+    public boolean isAuthorised(){
         return accountLink.isDisplayed();
     }
 
-    public void logOutSuccess() {
+    public void logOut() {
         accountIcon.click();
         signOutButton.click();
         waitForJSinactivity(driver);
     }
 
-    public boolean assertIsNotAuthorized() {
+    public boolean isNotAuthorized() {
         return accountChooserLink.isDisplayed();
     }
 
-    public boolean assertContentOnPage(){
+    public boolean isContentOnPageCorrect(){
         boolean elementsDisplayed = false;
         if (tagline.isDisplayed() &&
         accountPicture.isDisplayed() &&

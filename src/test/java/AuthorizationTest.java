@@ -12,13 +12,13 @@ public class AuthorizationTest extends BaseSpec {
 
     @Test
     public void firstLogInTest(){
-        logInPage.logInSuccess();
-        assertTrue(logInPage.assertIsAuthorised());
+        logInPage.logIn();
+        assertTrue("User is not authorized but has to be authorized",logInPage.isAuthorised());
     }
 
     @Test
     public void secondLogOutTest(){
-        logInPage.logOutSuccess();
-        assertTrue(logInPage.assertIsNotAuthorized());
+        logInPage.logOut();
+        assertTrue("User is authorized but has to be not authorized",logInPage.isNotAuthorized());
     }
 }

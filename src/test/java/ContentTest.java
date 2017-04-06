@@ -10,12 +10,12 @@ public class ContentTest extends BaseSpec{
 
     @Test
     public void inboxPageContentTest(){
-        logInPage.logInSuccess();
-        assertTrue(inboxPage.assertContentOnPage());
+        logInPage.logIn();
+        assertTrue("Content on InboxPage is incorrect",inboxPage.isContentOnPageCorrect());
     }
 
     @Test
     public void logInPageContentText(){
-        assertTrue(logInPage.assertContentOnPage());
+        assertTrue("Content on LogInPage is incorrect",logInPage.isContentOnPageCorrect());
     }
 }
