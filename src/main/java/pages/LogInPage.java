@@ -1,15 +1,13 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.appendice.CommonConstants;
-import pages.appendice.FunctionExtension;
+import pages.appendice.PageExtension;
 
-public class LogInPage extends FunctionExtension {
+public class LogInPage extends PageExtension {
 
-    public LogInPage(WebDriver driver) {
-        super(driver);
+    public LogInPage() {
     }
 
     @FindBy(css = "input#Email")

@@ -5,8 +5,8 @@ import pages.LogInPage;
 import static junit.framework.TestCase.assertTrue;
 
 public class ContentTest extends BaseSpec{
-    InboxPage inboxPage = new InboxPage(driver);
-    LogInPage logInPage = new LogInPage(driver);
+    InboxPage inboxPage = new InboxPage();
+    LogInPage logInPage = new LogInPage();
 
     @Test
     public void inboxPageContentTest(){

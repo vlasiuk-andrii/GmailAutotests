@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorizationTest extends BaseSpec {
 
-    LogInPage logInPage = new LogInPage(driver);
+    LogInPage logInPage = new LogInPage();
 
     @Test
     public void firstLogInTest(){

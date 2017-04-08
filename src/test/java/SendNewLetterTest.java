@@ -8,8 +8,8 @@ import pages.appendice.CommonConstants;
 import static junit.framework.TestCase.assertTrue;
 
 public class SendNewLetterTest extends BaseSpec{
-    InboxPage inboxPage = new InboxPage(driver);
-    LogInPage logInPage = new LogInPage(driver);
+    InboxPage inboxPage = new InboxPage();
+    LogInPage logInPage = new LogInPage();
 
     @Before
     public void logIn(){

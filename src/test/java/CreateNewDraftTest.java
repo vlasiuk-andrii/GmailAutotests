@@ -7,8 +7,8 @@ import pages.appendice.CommonConstants;
 import static org.junit.Assert.assertTrue;
 
 public class CreateNewDraftTest extends BaseSpec{
-    InboxPage inboxPage = new InboxPage(driver);
-    LogInPage logInPage = new LogInPage(driver);
+    InboxPage inboxPage = new InboxPage();
+    LogInPage logInPage = new LogInPage();
 
     @Before
     public void logIn(){

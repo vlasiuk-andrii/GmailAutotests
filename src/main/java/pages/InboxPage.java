@@ -5,17 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.appendice.CommonConstants;
-import pages.appendice.FunctionExtension;
+import pages.appendice.PageExtension;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
 
-public class InboxPage extends FunctionExtension {
+public class InboxPage extends PageExtension {
 
-    public InboxPage(WebDriver driver) {
-        super(driver);
+    public InboxPage() {;
     }
 
     @FindBy(css = "div.ae4.aDM")
