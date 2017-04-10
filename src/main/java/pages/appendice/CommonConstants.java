@@ -16,7 +16,7 @@ public class CommonConstants{
     public static final String BROWSER_NAME_FIREFOX = "firefox";
     public static final String BROWSER_NAME_PHANTOMJS = "phantomjs";
     public static final String BROWSER_NAME_EDGE = "edge";
-    public static final String BROWSER_PATH_CHROME = "drivers/windows/chromedriver.exe";
+    public static final String BROWSER_PATH_CHROME = "drivers/ubuntu64bit/chromedriver";
     public static final String BROWSER_PATH_FIREFOX = "drivers/windows/geckodriver.exe";
     public static final String BROWSER_PATH_PHANTOMJS = "drivers/windows/phantomjs.exe";
     public static final String BROWSER_PATH_EDGE = "drivers/windows/MicrosoftWebDriver.exe";

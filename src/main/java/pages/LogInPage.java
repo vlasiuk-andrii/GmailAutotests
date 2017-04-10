@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.appendice.CommonConstants;
@@ -43,13 +44,21 @@ public class LogInPage extends PageExtension {
     @FindBy(xpath = "//a[contains(text(),'Create account')]")
     private WebElement createAccountLink;
 
+    public void visit(){
+        driver.get("https://gmail.com/");
+    }
+
+    public void check(){
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/"));
+    }
+
     public void logIn()  {
         emailField.sendKeys(CommonConstants.EMAIL);
         nextButton.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         passwordField.sendKeys(CommonConstants.PASSWORD);
         signInButton.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
     }
 
     public boolean isAuthorised(){
@@ -59,7 +68,7 @@ public class LogInPage extends PageExtension {
     public void logOut() {
         accountIcon.click();
         signOutButton.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
     }
 
     public boolean isNotAuthorized() {

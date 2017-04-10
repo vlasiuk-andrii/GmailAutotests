@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,8 @@ import pages.appendice.PageExtension;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+
+import static pages.appendice.CommonConstants.*;
 
 
 public class InboxPage extends PageExtension {
@@ -41,7 +44,7 @@ public class InboxPage extends PageExtension {
     @FindBy(css = "div.T-I.J-J5-Ji.aoO.T-I-atl.L3")
     private WebElement sendLetterButton;
 
-    @FindBy(css = CommonConstants.NEW_MESSAGE_PANEL_LOCATOR)
+    @FindBy(css = NEW_MESSAGE_PANEL_LOCATOR)
     private WebElement newMessagePanel;
 
     @FindBy(xpath = "//table[@class='F cf zt']//tbody/tr[1]")
@@ -62,6 +65,14 @@ public class InboxPage extends PageExtension {
     @FindBy(xpath = "(//table[@class='F cf zt']//tbody/tr[1])[2]")
     private WebElement lastDraft;
 
+    public void visit(){
+        driver.get("https://mail.google.com/mail/u/0/#inbox");
+    }
+
+    public void  check(){
+        Assert.assertTrue(driver.getCurrentUrl().contentEquals("https://mail.google.com/mail/u/0/#inbox"));
+    }
+
     public boolean isContentOnPageCorrect(){
         boolean elementsDisplayed = false;
         if(inboxMailList.isDisplayed() &&
@@ -74,15 +85,15 @@ public class InboxPage extends PageExtension {
 
     public void sendNewLetter(String sendTo, String topic, String letterBody) {
         createNewMessageButton.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         sendToField.sendKeys(sendTo);
         emailTopicField.sendKeys(topic + currentDateAndTime());
         emailTextArea.sendKeys(letterBody);
         //attachFile("D:\\GmailAutotests\\pom.xml", "div.a1.aaA.aMZ");
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         sendLetterButton.click();
-        waitForJSinactivity(driver);
-        elementIsNotDisplayed(driver, CommonConstants.NEW_MESSAGE_PANEL_LOCATOR);
+        waitForJSinactivity();
+        elementIsNotDisplayed(NEW_MESSAGE_PANEL_LOCATOR);
     }
 
     public boolean isLetterReceived(String topic, String letterBodyText) {
@@ -122,20 +133,20 @@ public class InboxPage extends PageExtension {
 
     public void createNewDraft(String draftTopic, String draftBody) {
         createNewMessageButton.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         emailTopicField.sendKeys(draftTopic + currentDateAndTime());
         emailTextArea.sendKeys(draftBody);
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         closePanelButton.click();
-        waitForJSinactivity(driver);
-        elementIsNotDisplayed(driver, CommonConstants.NEW_MESSAGE_PANEL_LOCATOR);
+        waitForJSinactivity();
+        elementIsNotDisplayed(NEW_MESSAGE_PANEL_LOCATOR);
 }
 
     public boolean isDraftCreated(String draftTopic, String draftBody) {
         draftLink.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         lastDraft.click();
-        waitForJSinactivity(driver);
+        waitForJSinactivity();
         return isDraftContentCorrect(draftTopic, draftBody);
     }
 

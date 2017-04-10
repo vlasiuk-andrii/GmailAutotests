@@ -19,7 +19,7 @@ public class PageExtension extends ServiceWD{
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForJSinactivity(WebDriver driver){
+    public void waitForJSinactivity(){
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
                         return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
@@ -39,7 +39,7 @@ public class PageExtension extends ServiceWD{
         return timeStamp;
     }
 
-    public void elementIsNotDisplayed(WebDriver driver, String elementCssLocator) {
+    public void elementIsNotDisplayed(String elementCssLocator) {
         try {
             driver.findElement(By.cssSelector(elementCssLocator));
             fail("Element is present. But shouldn't be present");

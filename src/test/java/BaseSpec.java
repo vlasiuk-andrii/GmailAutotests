@@ -7,7 +7,6 @@ public class BaseSpec {
     @BeforeClass
     public static void setUp() {
         ServiceWD.initWD();
-        ServiceWD.getBaseUrl();
     }
 
     @AfterClass

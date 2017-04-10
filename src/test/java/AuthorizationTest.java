@@ -1,6 +1,7 @@
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import pages.InboxPage;
 import pages.LogInPage;
 
 import static org.junit.Assert.assertTrue;
@@ -9,10 +10,12 @@ import static org.junit.Assert.assertTrue;
 public class AuthorizationTest extends BaseSpec {
 
     LogInPage logInPage = new LogInPage();
+    InboxPage inboxPage = new InboxPage();
 
     @Test
     public void firstLogInTest(){
-        given: // user is not authorized
+        given:
+        logInPage.visit();
 
         when:
         logInPage.logIn();
@@ -23,7 +26,8 @@ public class AuthorizationTest extends BaseSpec {
 
     @Test
     public void secondLogOutTest(){
-        given:  // after previous test user is authorized
+        given:
+        inboxPage.check();
 
         when:
         logInPage.logOut();
