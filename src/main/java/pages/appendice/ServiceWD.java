@@ -36,7 +36,7 @@ public class ServiceWD {
             System.setProperty("webdriver.gecko.driver", CommonConstants.BROWSER_PATH_FIREFOX);
             driver = new FirefoxDriver();
         } else if (BROWSER.equals(CommonConstants.BROWSER_NAME_CHROME)) {
-            System.setProperty("webdriver.chrome.driver", "drivers/ubuntu64bit/chromedriver");
+            System.setProperty("webdriver.chrome.driver",  CommonConstants.BROWSER_PATH_CHROME);
             //System.setProperty("webdriver.chrome.args", "--disable-logging");
             System.setProperty("webdriver.chrome.silentOutput", "true");
             driver = new ChromeDriver();
