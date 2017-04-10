@@ -1,4 +1,3 @@
-import org.junit.Before;
 import org.junit.Test;
 import pages.InboxPage;
 import pages.LogInPage;
@@ -10,14 +9,15 @@ public class CreateNewDraftTest extends BaseSpec{
     InboxPage inboxPage = new InboxPage();
     LogInPage logInPage = new LogInPage();
 
-    @Before
-    public void logIn(){
-        logInPage.logIn();
-    }
-
     @Test
     public void createNewDraftTest(){
+        given:
+        logInPage.logIn();
+
+        when:
         inboxPage.createNewDraft(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY);
+
+        then:
         assertTrue("Draft wasn't created",inboxPage.isDraftCreated(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY));
     }
 }

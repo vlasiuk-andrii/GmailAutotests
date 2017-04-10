@@ -53,6 +53,9 @@ public class ServiceWD {
         } else {
             throw new RuntimeException("Browser type unsupported");
         }
+    }
+
+    public static void getBaseUrl(){
         driver.get(URL);
     }
 
