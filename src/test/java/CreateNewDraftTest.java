@@ -1,9 +1,10 @@
 import org.junit.Test;
 import pages.InboxPage;
 import pages.LogInPage;
-import pages.appendice.CommonConstants;
 
 import static org.junit.Assert.assertTrue;
+import static pages.appendice.CommonConstants.DRAFT_BODY;
+import static pages.appendice.CommonConstants.DRAFT_TOPIC;
 
 public class CreateNewDraftTest extends BaseSpec{
     InboxPage inboxPage = new InboxPage();
@@ -12,12 +13,14 @@ public class CreateNewDraftTest extends BaseSpec{
     @Test
     public void createNewDraftTest(){
         given:
+        logInPage.visit();
         logInPage.logIn();
 
         when:
-        inboxPage.createNewDraft(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY);
+        inboxPage.check();
+        inboxPage.createNewDraft(DRAFT_TOPIC, DRAFT_BODY);
 
         then:
-        assertTrue("Draft wasn't created",inboxPage.isDraftCreated(CommonConstants.DRAFT_TOPIC, CommonConstants.DRAFT_BODY));
+        assertTrue("Draft wasn't created",inboxPage.isDraftCreated(DRAFT_TOPIC, DRAFT_BODY));
     }
 }

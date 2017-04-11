@@ -12,9 +12,11 @@ public class SendNewLetterTest extends BaseSpec{
     @Test
     public void sendNewLetterTest() {
         given:
+        logInPage.visit();
         logInPage.logIn();
 
         when:
+        inboxPage.check();
         inboxPage.sendNewLetter(CommonConstants.EMAIL, CommonConstants.LETTER_TOPIC, CommonConstants.LETTER_BODY);
 
         then:
